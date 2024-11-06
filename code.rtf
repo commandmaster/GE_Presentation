@@ -1,0 +1,72 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}
+{\colortbl;
+\red23\green117\blue0;
+\red99\green56\blue32;
+\red28\green1\blue206;
+\red196\green26\blue22;
+\red35\green0\blue206;
+\red0\green0\blue0;
+\red169\green13\blue145;
+\red131\green108\blue40;
+\red63\green110\blue117;
+\red91\green38\blue154;
+}
+\f0\sa0
+\dntblnsbdb
+{\cf7 class} {\cf6 Runtime}\{\par
+    {\cf7 constructor}()\{\par
+        {\cf7 this}.{\cf6 components} {\cf6 =} [];\par
+    \}\par
+\par
+    {\cf6 render}()\{\par
+        {\cf7 this}.{\cf6 components}.{\cf6 forEach}({\cf6 component} => {\cf6 component}.{\cf6 render}());\par
+    \}\par
+\}\par
+\par
+{\cf7 class} {\cf6 API}\{\par
+  {\cf7 constructor}({\cf6 runtime})\{\par
+    {\cf7 this}.{\cf6 runtime} {\cf6 =} {\cf6 runtime};\par
+  \}\par
+\par
+  {\cf6 addComponent}({\cf6 component})\{\par
+    {\cf7 this}.{\cf6 runtime}.{\cf6 components}.{\cf6 push}({\cf6 component});\par
+  \}\par
+\par
+  {\cf6 updateComponents}()\{\par
+    {\cf7 this}.{\cf6 runtime}.{\cf6 components}.{\cf6 forEach}({\cf6 component} => {\cf6 component}.{\cf6 update}());\par
+  \}\par
+\}\par
+\par
+{\cf7 class} {\cf6 Circle}\{\par
+    {\cf7 constructor}({\cf6 x}, {\cf6 y}, {\cf6 radius})\{\par
+        {\cf7 this}.{\cf6 x} {\cf6 =} {\cf6 x};\par
+        {\cf7 this}.{\cf6 y} {\cf6 =} {\cf6 y};\par
+        {\cf7 this}.{\cf6 radius} {\cf6 =} {\cf6 radius};\par
+    \}\par
+\par
+    {\cf6 render}()\{\par
+        {\cf6 ellipse}({\cf7 this}.{\cf6 x}, {\cf7 this}.{\cf6 y}, {\cf7 this}.{\cf6 radius});\par
+    \}\par
+\par
+    {\cf6 update}()\{\par
+        {\cf7 this}.{\cf6 x} {\cf6 +=} {\cf3 1};\par
+    \}\par
+\}\par
+\par
+\par
+{\cf7 let} {\cf6 runtime} {\cf6 =} {\cf6 new} {\cf6 Runtime}();\par
+{\cf7 let} {\cf6 api} {\cf6 =} {\cf6 new} {\cf6 API}({\cf6 runtime});\par
+\par
+{\cf7 function} {\cf6 setup}() \{\par
+  {\cf6 createCanvas}({\cf6 windowWidth}, {\cf6 windowHeight});\par
+  {\cf6 api}.{\cf6 addComponent}({\cf6 new} {\cf6 Circle}({\cf3 100}, {\cf3 100}, {\cf3 50}));\par
+\par
+\}\par
+\par
+{\cf7 function} {\cf6 draw}() \{\par
+  {\cf6 background}({\cf3 220});\par
+\par
+  {\cf6 api}.{\cf6 updateComponents}();\par
+  {\cf6 runtime}.{\cf6 render}();\par
+\}\par
+}
